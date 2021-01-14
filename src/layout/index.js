@@ -2,11 +2,12 @@
  * @Author: zhangyun
  * @Date: 2021-01-14 11:12:26
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-14 11:31:32
- * @FilePath: /react-admin-demo/src/layout/index.js
+ * @LastEditTime: 2021-01-14 16:24:25
+ * @FilePath: /REACT/react-admin-demo/src/layout/index.js
  */
 import React, { Component } from 'react'
-import { Router, Route, Link } from 'react-router'
+// import React from 'react'
+import { BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import {
   MenuUnfoldOutlined,
@@ -16,9 +17,11 @@ import {
   UploadOutlined,
 } from '@ant-design/icons'
 import './layout.scss'
+import Users from '../views/Users'
+import Settings from '../views/Settings'
 
-const { Header, Sider, Content } = Layout
-class layout extends Component {
+const { Header, Content, Footer } = Layout
+class Home extends Component {
   state = {
     collapsed: false,
   }
@@ -29,42 +32,38 @@ class layout extends Component {
   }
   render() {
     return (
-      <Layout className="layout">
-        <Router></Router>
-        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-          <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={<UserOutlined />}>
-              nav 1
-            </Menu.Item>
-            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-              nav 2
-            </Menu.Item>
-            <Menu.Item key="3" icon={<UploadOutlined />}>
-              nav 3
-            </Menu.Item>
-          </Menu>
-        </Sider>
-        <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }}>
-            {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              className: 'trigger',
-              onClick: this.toggle,
-            })}
-          </Header>
-          <Content
-            className="site-layout-background"
-            style={{
-              margin: '24px 16px',
-              padding: 24,
-              minHeight: 280,
-            }}
-          >
-            Content
-          </Content>
-        </Layout>
-      </Layout>
+      <Router>
+        <div className="layout">
+          <Layout className="layout">
+            <Header>
+              <div className="logo" />
+              <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['1']}>
+                <Menu.Item key="1">
+                  <Link to="/users">首页</Link>
+                </Menu.Item>
+                <Menu.Item key="2">
+                  <Link to="/settings">设置</Link>
+                </Menu.Item>
+                <Menu.Item key="3">nav 3</Menu.Item>
+              </Menu>
+            </Header>
+            <Content style={{ padding: '0 50px' }}>
+              <div className="site-layout-content">
+                <Switch>
+                  <Route exact path="/users">
+                    <Users />
+                  </Route>
+                  <Route path="/settings">
+                    <Settings />
+                  </Route>
+                </Switch>
+              </div>
+            </Content>
+            <Footer style={{ textAlign: 'center' }}>admin ©2021 Created by 蒲月</Footer>
+          </Layout>
+        </div>
+      </Router>
     )
   }
 }
-export default layout
+export default Home

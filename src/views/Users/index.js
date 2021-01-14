@@ -1,18 +1,12 @@
 /*
  * @Author: zhangyun
- * @Date: 2021-01-14 11:21:49
+ * @Date: 2021-01-14 14:04:33
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-14 11:28:27
- * @FilePath: /react-admin-demo/src/views/Users/index.js
+ * @LastEditTime: 2021-01-14 16:20:10
+ * @FilePath: /REACT/react-admin-demo/src/views/Users/index.js
  */
-import React, { Component, Fragment } from 'react'
+import React from 'react'
 
-function Users (props) {
-  render() {
-    return 
-    <Fragment>
-      <div>users</div>
-    </Fragment>
-  }
+export default function Users(props) {
+  return <div>users</div>
 }
-export default Users
