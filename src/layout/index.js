@@ -2,28 +2,24 @@
  * @Author: zhangyun
  * @Date: 2021-01-14 11:12:26
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-14 17:30:57
- * @FilePath: /REACT/react-admin-demo/src/layout/index.js
+ * @LastEditTime: 2021-01-15 09:27:04
+ * @FilePath: /react-admin-demo/src/layout/index.js
  */
 import React, { Component } from 'react'
-// import React from 'react'
-import { BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch } from 'react-router-dom'
-import { Layout, Menu } from 'antd'
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-} from '@ant-design/icons'
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom'
+import { Layout } from 'antd'
 import './layout.scss'
 import Users from '../views/Users'
 import InnerHome from '../views/Home'
 import Header from '../components/Header'
 import TopMenu from '../components/Menu'
 import TopMenuItem from '../components/Menu/MenuItem'
+// icon
+import { Nests } from '@icon-park/react'
+
 const { Content } = Layout
 
+// route
 const links = [
   {
     to: '/home',
@@ -34,7 +30,7 @@ const links = [
     name: '用户',
   },
 ]
-class Home extends Component {
+export default class Home extends Component {
   state = {
     collapsed: false,
   }
@@ -48,7 +44,7 @@ class Home extends Component {
       <Router>
         <div className="layout">
           <Layout className="layout">
-            <Header>
+            <Header icon={<Nests theme="outline" size="24" fill="#fff" />}>
               <TopMenu>
                 {links.map((link, i) => {
                   return (
@@ -68,14 +64,15 @@ class Home extends Component {
                   <Route path="/users">
                     <Users />
                   </Route>
+                  <Redirect path="/" to="/home">
+                    <Users />
+                  </Redirect>
                 </Switch>
               </div>
             </Content>
-            {/* <Footer style={{ textAlign: 'center' }}>admin ©2021 Created by 蒲月</Footer> */}
           </Layout>
         </div>
       </Router>
     )
   }
 }
-export default Home
