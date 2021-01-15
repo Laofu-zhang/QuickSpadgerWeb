@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-01-15 10:05:40
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-15 16:17:11
+ * @LastEditTime: 2021-01-15 16:45:53
  * @FilePath: /react-admin-demo/webpack.dev.config.js
  */
 const webpackMerge = require('webpack-merge')
@@ -13,7 +13,6 @@ const path = require('path')
 
 module.exports = webpackMerge.merge(baseWbpackConfig, {
   mode: 'development',
-  // devtool: 'cheap-module-eval-source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebPackPlugin({
@@ -25,6 +24,7 @@ module.exports = webpackMerge.merge(baseWbpackConfig, {
   devServer: {
     contentBase: './dist',
     compress: true,
+    open: true,
     host: 'localhost',
     port: 3000,
   },
