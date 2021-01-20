@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-01-14 11:12:26
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-15 09:27:04
+ * @LastEditTime: 2021-01-20 16:20:33
  * @FilePath: /react-admin-demo/src/layout/index.js
  */
 import React, { Component } from 'react'
@@ -22,7 +22,7 @@ const { Content } = Layout
 // route
 const links = [
   {
-    to: '/home',
+    to: '/',
     name: '首页',
   },
   {
@@ -55,18 +55,15 @@ export default class Home extends Component {
                 })}
               </TopMenu>
             </Header>
-            <Content style={{ padding: '0 50px' }}>
+            <Content>
               <div className="site-layout-content">
                 <Switch>
-                  <Route exact path="/home">
+                  <Route exact path="/">
                     <InnerHome />
                   </Route>
                   <Route path="/users">
                     <Users />
                   </Route>
-                  <Redirect path="/" to="/home">
-                    <Users />
-                  </Redirect>
                 </Switch>
               </div>
             </Content>
