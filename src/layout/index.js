@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-01-14 11:12:26
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-20 16:20:33
+ * @LastEditTime: 2021-01-22 15:48:40
  * @FilePath: /react-admin-demo/src/layout/index.js
  */
 import React, { Component } from 'react'
@@ -10,10 +10,12 @@ import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-ro
 import { Layout } from 'antd'
 import './layout.scss'
 import Users from '../views/Users'
+import Manage from '../views/Manage'
 import InnerHome from '../views/Home'
 import Header from '../components/Header'
-import TopMenu from '../components/Menu'
-import TopMenuItem from '../components/Menu/MenuItem'
+import AnimatedSwitch from '../components/AnimatedSwitch'
+import HeaderMenus from '../components/HeaderMenus'
+
 // icon
 import { Nests } from '@icon-park/react'
 
@@ -22,11 +24,15 @@ const { Content } = Layout
 // route
 const links = [
   {
-    to: '/',
+    key: '/',
     name: '首页',
   },
   {
-    to: '/users',
+    key: '/manage',
+    name: '管理',
+  },
+  {
+    key: '/users',
     name: '用户',
   },
 ]
@@ -45,27 +51,20 @@ export default class Home extends Component {
         <div className="layout">
           <Layout className="layout">
             <Header icon={<Nests theme="outline" size="24" fill="#fff" />}>
-              <TopMenu>
-                {links.map((link, i) => {
-                  return (
-                    <TopMenuItem key={i}>
-                      <Link to={link.to}>{link.name}</Link>
-                    </TopMenuItem>
-                  )
-                })}
-              </TopMenu>
+              <HeaderMenus items={links} defaultActive="/" />
             </Header>
             <Content>
-              <div className="site-layout-content">
-                <Switch>
-                  <Route exact path="/">
-                    <InnerHome />
-                  </Route>
-                  <Route path="/users">
-                    <Users />
-                  </Route>
-                </Switch>
-              </div>
+              <AnimatedSwitch>
+                <Route exact path="/">
+                  <InnerHome />
+                </Route>
+                <Route path="/users">
+                  <Users />
+                </Route>
+                <Route path="/manage">
+                  <Manage />
+                </Route>
+              </AnimatedSwitch>
             </Content>
           </Layout>
         </div>
