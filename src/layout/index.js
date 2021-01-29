@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-01-14 11:12:26
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-22 17:25:07
+ * @LastEditTime: 2021-01-28 07:56:10
  * @FilePath: /react-admin-demo/src/layout/index.js
  */
 import React, { Component } from 'react'
@@ -13,8 +13,8 @@ import Users from '../views/Users'
 import Manage from '../views/Manage'
 import InnerHome from '../views/Home'
 import Header from '../components/Header'
-import AnimatedSwitch from '../components/AnimatedSwitch'
 import AsideMenus from '../components/Menus'
+import Search from '../components/Search'
 
 // icon
 import { Nests } from '@icon-park/react'
@@ -37,14 +37,16 @@ export default class Home extends Component {
       <Router>
         <div className="layout">
           <Layout className="layout">
-            <Header icon={<Nests theme="outline" size="24" fill="#fff" />}></Header>
+            <Header icon={<Nests theme="outline" size="24" fill="#fff" />}>
+              <Search />
+            </Header>
             <Content>
               <div className="main-content">
                 <div className="aside-menu">
                   <AsideMenus menuItems={asideRoute} />
                 </div>
                 <div className="conponent-container">
-                  <AnimatedSwitch>
+                  <Switch>
                     <Route exact path="/">
                       <InnerHome />
                     </Route>
@@ -54,7 +56,7 @@ export default class Home extends Component {
                     <Route path="/manage">
                       <Manage />
                     </Route>
-                  </AnimatedSwitch>
+                  </Switch>
                 </div>
               </div>
             </Content>
