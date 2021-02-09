@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-01-14 11:12:26
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-28 07:56:10
+ * @LastEditTime: 2021-02-09 13:54:57
  * @FilePath: /react-admin-demo/src/layout/index.js
  */
 import React, { Component } from 'react'
@@ -11,6 +11,7 @@ import { Layout } from 'antd'
 import './layout.scss'
 import Users from '../views/Users'
 import Manage from '../views/Manage'
+import Category from '../views/Category'
 import InnerHome from '../views/Home'
 import Header from '../components/Header'
 import AsideMenus from '../components/Menus'
@@ -55,6 +56,9 @@ export default class Home extends Component {
                     </Route>
                     <Route path="/manage">
                       <Manage />
+                    </Route>
+                    <Route path="/category">
+                      <Category />
                     </Route>
                   </Switch>
                 </div>

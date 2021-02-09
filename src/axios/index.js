@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-01-27 11:26:47
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-27 11:33:33
+ * @LastEditTime: 2021-02-09 13:49:59
  * @FilePath: /react-admin-demo/src/axios/index.js
  */
 import request from './request'
@@ -23,9 +23,9 @@ export const get = (url, params) => {
   })
 }
 
-export const put = (url, id, params) => {
+export const put = (url, params) => {
   return request({
-    url: url + '?' + id,
+    url: url,
     method: 'PUT',
     data: params,
   })
@@ -33,7 +33,8 @@ export const put = (url, id, params) => {
 
 export const remove = (url, id) => {
   return request({
-    url: url + '?' + id,
+    url: url,
     method: 'DELETE',
+    params: { id: id },
   })
 }
