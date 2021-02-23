@@ -2,14 +2,15 @@
  * @Author: zhangyun
  * @Date: 2021-01-20 17:27:32
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-28 08:07:15
+ * @LastEditTime: 2021-02-22 17:25:40
  * @FilePath: /react-admin-demo/src/views/Manage/index.js
  */
 import React, { useState } from 'react'
 import './manage.scss'
 import Editor from '../../components/Editor'
-import { Tabs, Input, Button } from 'antd'
+import { Tabs, Input, Button, Select } from 'antd'
 import { FileWordOutlined, PlayCircleOutlined, FontColorsOutlined } from '@ant-design/icons'
+import { set } from 'lodash'
 
 const { TabPane } = Tabs
 
@@ -45,14 +46,44 @@ export default function Manage(props) {
 }
 
 function ArticleEditor(props) {
+  const [title, setTitle] = useState(null)
+  const [content, setContent] = useState(null)
   function handleEditorChange(val) {
     console.log('html', val)
+    setContent(val)
+  }
+  function handleTitleChange(val) {
+    console.log('html', val)
+    setTitle(val)
+  }
+  function pushContent() {
+    console.log('pushContent', { title: title, content: content })
   }
   return (
     <div>
-      <Input size="large" placeholder="请输入标题" prefix={<FontColorsOutlined />} />
+      <div className="title-content">
+        <Input
+          className="name"
+          size="large"
+          placeholder="请输入标题"
+          prefix={<FontColorsOutlined />}
+          onChange={handleTitleChange}
+        />
+        <Select
+          className="category"
+          showSearch
+          style={{ width: 200 }}
+          placeholder="Select a person"
+          optionFilterProp="children"
+        >
+          <Option value="jack">Jack</Option>
+          <Option value="lucy">Lucy</Option>
+          <Option value="tom">Tom</Option>
+        </Select>
+      </div>
+
       <Editor handleChange={handleEditorChange} />
-      <Button type="dashed" className="btn-submit">
+      <Button type="primary" className="btn-submit" onClick={pushContent}>
         提交
       </Button>
     </div>

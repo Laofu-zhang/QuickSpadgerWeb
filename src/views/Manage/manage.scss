@@ -2,5 +2,17 @@
   height: 100%;
   .btn-submit {
     text-align: center;
+    margin-top: 5px;
+  }
+  .title-content {
+    display: flex;
+    width: 50%;
+    .name, .category {
+      flex: 1
+    }
+    .category {
+      z-index: 10;
+      height: 100%
+    }
   }
 }

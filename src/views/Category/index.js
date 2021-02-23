@@ -2,10 +2,10 @@
  * @Author: zhangyun
  * @Date: 2021-02-09 13:51:19
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-02-09 16:51:24
+ * @LastEditTime: 2021-02-09 17:26:20
  * @Desc:
  */
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Table, Button, Empty } from 'antd'
 import { getCategory, createCategory } from '../../api/category'
 import EditCategory from './EditCategory'
@@ -36,32 +36,43 @@ const columns = [
 export default function Category(props) {
   const [data, setData] = useState([])
   const [visible, setVisible] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const editRef = useRef(null)
+
   useEffect(async () => {
     const res = await getCategory()
     setData(res)
   }, [])
-  useEffect(() => {
-    console.log('===child===', visible)
-  })
-  function addCategory() {
+  const showEditCategory = () => {
     setVisible(true)
   }
   const onConfirm = async (props) => {
+    setLoading(true)
     await createCategory(props)
     const res = await getCategory()
     setData(res)
     setVisible(false)
+    setLoading(false)
+    editRef.current.onReset()
+    // console.log('editRef', editRef.current.onReset())
   }
   const onCancel = () => {
     setVisible(false)
   }
+
   return (
     <div className="category-container">
       <div className="header-operator">
-        <Button onClick={addCategory}>增加分类</Button>
+        <Button onClick={showEditCategory}>增加分类</Button>
       </div>
       {!data.length ? <Empty /> : <Table columns={columns} dataSource={data} />}
-      <EditCategory visible={visible} onConfirm={onConfirm} onCancel={onCancel}></EditCategory>
+      <EditCategory
+        ref={editRef}
+        visible={visible}
+        loading={loading}
+        onConfirm={onConfirm}
+        onCancel={onCancel}
+      ></EditCategory>
     </div>
   )
 }

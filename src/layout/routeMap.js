@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-01-22 17:09:18
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-02-09 13:56:36
+ * @LastEditTime: 2021-02-22 17:01:21
  * @FilePath: /react-admin-demo/src/layout/routeMap.js
  */
 export const asideRoute = [
@@ -13,7 +13,7 @@ export const asideRoute = [
   },
   {
     key: '/manage',
-    name: '管理',
+    name: '内容',
     active: false,
   },
   {
@@ -23,7 +23,7 @@ export const asideRoute = [
   },
   {
     key: '/category',
-    name: '分类设置',
+    name: '分类',
     active: false,
   },
 ]

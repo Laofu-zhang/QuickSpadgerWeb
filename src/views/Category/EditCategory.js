@@ -2,20 +2,19 @@
  * @Author: zhangyun
  * @Date: 2021-02-09 16:23:09
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-02-09 16:45:53
+ * @LastEditTime: 2021-02-09 17:18:53
  * @Desc:
  */
 
-import React, { useState } from 'react'
+import React, { useState, forwardRef } from 'react'
 import { Button, Modal, Input, Form } from 'antd'
 import _ from 'lodash'
 // 添加弹框
-export default function AddDialog(props) {
+const EditDialog = forwardRef((props, ref) => {
   const layout = {
     labelCol: { span: 6 },
     wrapperCol: { span: 18 },
   }
-  const [loading, setLoading] = useState(false)
   const [fields, setFields] = useState([
     {
       name: 'name',
@@ -30,6 +29,7 @@ export default function AddDialog(props) {
       value: '',
     },
   ])
+  const [form] = Form.useForm()
   const [submitParams, setSubmitParams] = useState({})
   const handleOk = () => {
     props.onConfirm(submitParams)
@@ -47,8 +47,12 @@ export default function AddDialog(props) {
   const getFormItemValue = (target, key) => {
     return _.find(target, { name: [key] }).value
   }
+  const onReset = () => {
+    form.resetFields()
+  }
   return (
     <Modal
+      ref={ref}
       visible={props.visible}
       title="添加分类"
       onOk={handleOk}
@@ -57,13 +61,14 @@ export default function AddDialog(props) {
         <Button key="back" onClick={handleCancel}>
           返回
         </Button>,
-        <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
+        <Button key="submit" type="primary" loading={props.loading} onClick={handleOk}>
           提交
         </Button>,
       ]}
     >
       <Form
         {...layout}
+        form={form}
         name="basic"
         initialValues={{ remember: true }}
         fields={fields}
@@ -84,4 +89,6 @@ export default function AddDialog(props) {
       </Form>
     </Modal>
   )
-}
+})
+
+export default EditDialog

@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-01-27 14:53:56
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-01-27 17:11:28
+ * @LastEditTime: 2021-02-22 17:36:38
  * @FilePath: /react-admin-demo/src/components/Editor/index.js
  */
 import React, { useState, useEffect, useRef } from 'react'
@@ -13,7 +13,7 @@ export default function Editor(props) {
   const { handleChange } = props
   useEffect(() => {
     initEdit()
-  })
+  }, '')
 
   function initEdit() {
     const elem = document.getElementById('editorRef')
@@ -23,5 +23,5 @@ export default function Editor(props) {
     }
     editor.create()
   }
-  return <div id="editorRef" ref={editorRef} style={{ textAlign: 'left' }}></div>
+  return <div id="editorRef" ref={editorRef} style={{ textAlign: 'left' }} className="editor-content"></div>
 }
