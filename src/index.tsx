@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-03-05 09:56:56
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-03-09 13:50:24
+ * @LastEditTime: 2021-03-10 14:17:43
  * @Desc: 
  */
 import React from 'react';
@@ -11,9 +11,9 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 
+// stylesheet
 import './index.css';
-import './style/normarlizi.scss';
-import './style/transition.scss';
+import './style/index.scss';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-03-05 09:56:56
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-03-10 13:39:01
+ * @LastEditTime: 2021-03-10 14:50:47
  * @Desc: 
  */
 import React from 'react';
@@ -59,8 +59,9 @@ function App() {
           <Route path="/hot" component={Hot}/>
           <Route path="/found" component={Found}/>
           <Route path="/detail" component={Detail}/>
-          <Route path="/article" component={Write}/>
+          <Route path="/write/:type" component={Write}/>
           <Redirect to="/home/literature" from="/home"/>
+          <Redirect to="/write/home" from="/write"/>
         </Switch>
       </div>
     </div>

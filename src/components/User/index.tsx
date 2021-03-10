@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-03-09 10:50:54
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-03-10 11:07:01
+ * @LastEditTime: 2021-03-10 14:07:25
  * @Desc: 
  */
 import React from 'react'
@@ -26,7 +26,7 @@ function User () {
 }
 function WriteArticleBtn() {
   return (
-    <Link to="/article" target="_blank">
+    <Link to="/write" target="_blank">
       <div className="write-btn flex h-10 w-32 bg-red-400 cursor-pointer hover:bg-red-600 rounded-full py-2 justify-center ">
         <WritingFluently theme="outline" size="24" fill="#fff"/>
         <span className="text-base ml-2">写文章</span>
