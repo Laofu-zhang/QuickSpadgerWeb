@@ -2,11 +2,11 @@
  * @Author: zhangyun
  * @Date: 2021-03-10 09:41:36
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-03-10 14:50:39
+ * @LastEditTime: 2021-03-10 17:02:39
  * @Desc: 
  */
 import React from 'react'
-import { Route, Switch, useHistory } from 'react-router-dom'
+import { Route, Switch, useHistory, useLocation } from 'react-router-dom'
 import './write.scss'
 
 // components
@@ -16,7 +16,7 @@ import EditMusic from './components/music'
 import EditVideo from './components/video'
 
 const editTypes = [
-  {name: '首页', key: 'home'},
+  {name: '创作首页', key: 'home'},
   {name: '发布博文', key: 'article'},
   {name: '上传视频', key: 'video'},
   {name: '上传音乐', key: 'music'},
@@ -47,11 +47,14 @@ function TypeMenu () {
   const linkEditPage = (key:any) => {
     history.push(`/write/${key}`)
   }
+  const location = useLocation()
+  const path = location.pathname
   return <div className="type-menu-container w-32">
     {
       editTypes.map((item:typeProps) => {
         return (
-          <div className="type-item p-2 w-full cursor-pointer text-center hover:text-green-400" 
+          <div 
+          className={['type-item', 'p-2', 'w-full', 'cursor-pointer', 'text-center', 'hover:text-red-400', path === `/write/${item.key}` && 'text-red-400'].join(' ')} 
           key={item.key} 
           onClick={() => {linkEditPage(item.key)}}>
             {item.name}
