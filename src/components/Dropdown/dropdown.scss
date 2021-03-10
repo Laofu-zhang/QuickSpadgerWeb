@@ -1,0 +1,36 @@
+.dropdown-content {
+  height: auto;
+  border-radius: 5px;
+}
+
+.dropdown-in {
+  animation: dropdownIn 0.5s ease;
+}
+
+@keyframes dropdownIn {
+  0% {
+    border-radius: 100%;
+    opacity: 0;
+  }
+  20% {
+    border-radius: 70%;
+    opacity: 0.2;
+  }
+  40% {
+    border-radius: 35%;
+    opacity: 0.4;
+  }
+  60% {
+    border-radius: 15%;
+    opacity: 0.6;
+  }
+  80% {
+    border-radius: 5%;
+    opacity: 0.8;
+  }
+  100% {
+    height: auto;
+    border-radius: 5px;
+    opacity: 1;
+  }
+}
