@@ -2,10 +2,16 @@
  * @Author: zhangyun
  * @Date: 2021-03-05 09:56:56
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-03-10 10:04:04
+ * @LastEditTime: 2021-03-10 13:39:01
  * @Desc: 
  */
 import React from 'react';
+import {
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+// style
 import './App.css';
 // pages
 import Main from './pages/main'
@@ -18,11 +24,7 @@ import Search from './components/Search'
 import Menu from './components/Menu'
 import User from './components/User'
 
-import {
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+
 
 function App() {
   const menus = [{
