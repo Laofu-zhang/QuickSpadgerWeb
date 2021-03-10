@@ -1,0 +1,39 @@
+// 基础色板
+$blue: #0d6efd !default;
+$indigo: #6610f2 !default;
+$purple: #6f42c1 !default;
+$pink: #d63384 !default;
+$red: #dc3545 !default;
+$orange: #fd7e14 !default;
+$yellow: #fadb14 !default;
+$green: #52c41a !default;
+$teal: #20c997 !default;
+$cyan: #17a2b8 !default;
+
+$colors: (
+  'blue': $blue,
+  'indigo': $indigo,
+  'purple': $purple,
+  'pink': $pink,
+  'red': $red,
+  'orange': $orange,
+  'yellow': $yellow,
+  'green': $green,
+  'teal': $teal,
+  'cyan': $cyan,
+);
+
+@each $name, $color in $colors {
+  .hover-#{$name}:hover {
+    color: $color;
+  }
+  .hover-bg-#{$name}:hover {
+    background-color: $color;
+  }
+  .font-#{$name} {
+    color: $color;
+  }
+  .bg-#{$name} {
+    background-color: $color;
+  }
+}
