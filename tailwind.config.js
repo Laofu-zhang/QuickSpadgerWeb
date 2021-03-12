@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-03-05 14:07:22
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-03-09 15:38:20
+ * @LastEditTime: 2021-03-12 15:14:54
  * @Desc:
  */
 module.exports = {
@@ -14,6 +14,10 @@ module.exports = {
         0: '0ms',
         2000: '2000ms',
       },
+    },
+    inset: {
+      '1/2': '50%',
+      0: 0,
     },
   },
   variants: {

@@ -2,11 +2,11 @@
  * @Author: zhangyun
  * @Date: 2021-03-10 09:41:36
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-03-10 17:02:39
+ * @LastEditTime: 2021-03-11 15:36:20
  * @Desc: 
  */
 import React from 'react'
-import { Route, Switch, useHistory, useLocation } from 'react-router-dom'
+import { Route, Switch, useHistory, useLocation, Redirect } from 'react-router-dom'
 import './write.scss'
 
 // components
@@ -36,6 +36,7 @@ function WriteArticle () {
           <Route path="/write/article" component={EditArticle}/>
           <Route path="/write/music" component={EditMusic}/>
           <Route path="/write/video" component={EditVideo}/>
+          <Redirect to="/write/home" from="/write"/>
         </Switch>
       </div>
     </div>

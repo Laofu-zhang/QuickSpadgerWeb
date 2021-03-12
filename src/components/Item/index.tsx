@@ -2,7 +2,7 @@
  * @Author: zhangyun
  * @Date: 2021-03-09 15:20:47
  * @LastEditors: zhangyun
- * @LastEditTime: 2021-03-09 16:24:36
+ * @LastEditTime: 2021-03-12 10:35:11
  * @Desc: 
  */
 import React from 'react'
@@ -15,7 +15,7 @@ function Item (props:any) {
   const handleLinkDetail = () => {
     history.push({pathname:'/detail', state: {id: id}})
   }
-   return <div className="item flex mt-10">
+   return <div className="item flex mt-10 border-b-2 border-dashed border-gray-600">
     <div className="content flex-1">
       <h4 className="text-2xl font-mono cursor-pointer hover:text-red-400" onClick={handleLinkDetail}>{title}</h4>
       <p className="text-base font-mono text-gray-500">{content}</p>
